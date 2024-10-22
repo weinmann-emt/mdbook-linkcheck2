@@ -46,7 +46,7 @@ use codespan_reporting::{
     diagnostic::{Diagnostic, Severity},
     term::termcolor::{ColorChoice, StandardStream},
 };
-use linkcheck::validation::Cache;
+use linkcheck2::validation::Cache;
 use mdbook::{
     book::{Book, BookItem},
     renderer::RenderContext,

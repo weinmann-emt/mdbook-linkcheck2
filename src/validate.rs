@@ -2,7 +2,7 @@ use crate::{Config, Context, IncompleteLink, WarningPolicy};
 use anyhow::Error;
 use codespan::{FileId, Files};
 use codespan_reporting::diagnostic::{Diagnostic, Label, Severity};
-use linkcheck::{
+use linkcheck2::{
     validation::{Cache, InvalidLink, Options, Outcomes, Reason},
     Link,
 };
@@ -54,7 +54,7 @@ fn lc_validate(
         let mut outcomes = Outcomes::default();
 
         for (current_dir, links) in links {
-            outcomes.merge(linkcheck::validate(&current_dir, links, &ctx).await);
+            outcomes.merge(linkcheck2::validate(&current_dir, links, &ctx).await);
         }
 
         outcomes
@@ -139,8 +139,8 @@ fn collate_links<'a>(
     links: &'a [Link],
     src_dir: &Path,
     files: &'a Files<String>,
-) -> impl Iterator<Item = (PathBuf, Vec<linkcheck::Link>)> {
-    let mut links_by_directory: HashMap<PathBuf, Vec<linkcheck::Link>> = HashMap::new();
+) -> impl Iterator<Item = (PathBuf, Vec<linkcheck2::Link>)> {
+    let mut links_by_directory: HashMap<PathBuf, Vec<linkcheck2::Link>> = HashMap::new();
 
     for link in links {
         let mut path = src_dir.join(files.name(link.file));

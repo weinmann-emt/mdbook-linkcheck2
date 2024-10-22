@@ -3,7 +3,7 @@ use crate::{
     latex::{filter_out_latex, ByteIndexMap},
 };
 use codespan::{ByteIndex, FileId, Files, Span};
-use linkcheck::Link;
+use linkcheck2::Link;
 use pulldown_cmark::{BrokenLink, CowStr};
 use std::{cell::RefCell, fmt::Debug};
 
@@ -61,7 +61,7 @@ where
                 let span = mapspan(origspan);
 
                 broken_links.borrow_mut().push(IncompleteLink {
-                    reference: broken_link.reference.to_string(),
+                    reference: reference.to_string(),
                     span,
                     file: file_id,
                 });
@@ -82,7 +82,7 @@ fn scan_links<'a, F>(
 where
     F: FnMut(BrokenLink<'_>) -> Option<(CowStr<'a>, CowStr<'a>)> + 'a,
 {
-    linkcheck::scanners::markdown_with_broken_link_callback(src, Some(cb))
+    linkcheck2::scanners::markdown_with_broken_link_callback(src, Some(cb))
         .map(move |(link, span)| Link::new(link, span, file_id))
 }
 

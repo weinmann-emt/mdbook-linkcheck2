@@ -1,13 +1,13 @@
 use crate::{Config, HashedRegex};
 use http::header::{HeaderMap, HeaderName, HeaderValue};
-use linkcheck::{
+use linkcheck2::{
     validation::{Cache, Options},
     Link,
 };
 use reqwest::{Client, Url};
 use std::sync::{Mutex, MutexGuard};
 
-/// The [`linkcheck::validation::Context`].
+/// The [`linkcheck2::validation::Context`].
 #[derive(Debug)]
 pub struct Context<'a> {
     pub(crate) cfg: &'a Config,
@@ -17,7 +17,7 @@ pub struct Context<'a> {
     pub(crate) interpolated_headers: Vec<(HashedRegex, Vec<(HeaderName, HeaderValue)>)>,
 }
 
-impl<'a> linkcheck::validation::Context for Context<'a> {
+impl<'a> linkcheck2::validation::Context for Context<'a> {
     fn client(&self) -> &Client {
         &self.client
     }

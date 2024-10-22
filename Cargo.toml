@@ -21,13 +21,13 @@ codespan = { version = "0.11.1" }
 codespan-reporting = "0.11"
 dunce = "1"
 env_logger = "0.11"
-http = "0.2"
-linkcheck = "0.4"
+http = "1.1"
+linkcheck2 = { path = "../linkcheck2", version = "0.4" }
 log = "0.4"
 mdbook = { version = "0.4", default-features = false }
-pulldown-cmark = "0.8.0"
+pulldown-cmark = "0.12.2"
 regex = "1"
-reqwest = { version = "0.11", default-features = false, features = ["native-tls-vendored"]}
+reqwest = "0.12.8"
 semver = "1"
 serde = { version = "1", features = ["derive"] }
 serde_derive = "1"
@@ -43,4 +43,4 @@ toml = "0.5"
 members = ["xtask"]
 
 [badges]
-maintenance = { status = "passively-maintained"}
+maintenance = { status = "passively-maintained" }

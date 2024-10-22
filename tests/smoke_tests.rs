@@ -3,7 +3,7 @@ extern crate pretty_assertions;
 
 use anyhow::Error;
 use codespan::{FileId, Files};
-use linkcheck::validation::{Cache, Reason};
+use linkcheck2::validation::{Cache, Reason};
 use mdbook::{
     renderer::{RenderContext, Renderer},
     MDBook,
