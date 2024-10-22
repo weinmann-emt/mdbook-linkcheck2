@@ -23,4 +23,5 @@ jobs:
       #- name: cargo fmt --check
       #  run: cargo fmt --check
       - run: cargo build
+      - run: cargo test
       - run: cargo test --doc
