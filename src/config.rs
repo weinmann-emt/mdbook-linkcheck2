@@ -284,7 +284,7 @@ mod tests {
     const CONFIG: &str = r#"follow-web-links = true
 traverse-parent-directories = true
 latex-support = true
-exclude = ["google\\.com"]
+exclude = ['google\.com']
 user-agent = "Internet Explorer"
 cache-timeout = 3600
 warning-policy = "error"
