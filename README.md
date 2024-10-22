@@ -8,7 +8,7 @@
 A backend for `mdbook` which will check your links for you. For use alongside
 the built-in HTML renderer.
 
-This is a **fork** of the [linkcheck](https://github.com/Michael-F-Bryan/mdbook-linkcheck) crate.
+This is a **fork** of the [mdbook-linkcheck](https://github.com/Michael-F-Bryan/mdbook-linkcheck) crate.
 
 ## Getting Started
 
