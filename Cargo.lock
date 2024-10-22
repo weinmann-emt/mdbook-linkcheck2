@@ -1194,9 +1194,10 @@ dependencies = [
 
 [[package]]
 name = "linkcheck2"
-version = "0.4.1"
+version = "0.5.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a78c57992fe7ccab41c231d7edc4fdfab60e1bda030611ed4336a36d007dbc99"
 dependencies = [
- "bytes",
  "codespan",
  "dunce",
  "futures",
