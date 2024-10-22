@@ -24,7 +24,7 @@ fn main() -> Result<(), Error> {
     } else {
         Some(cache_file.as_path())
     };
-    mdbook_linkcheck::run(cache_file, args.colour, &ctx, args.selected_files)
+    mdbook_linkcheck2::run(cache_file, args.colour, &ctx, args.selected_files)
 }
 
 #[derive(Debug, Clone, StructOpt)]

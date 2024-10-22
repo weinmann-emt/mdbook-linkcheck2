@@ -8,7 +8,7 @@ use mdbook::{
     renderer::{RenderContext, Renderer},
     MDBook,
 };
-use mdbook_linkcheck::{Config, HashedRegex, ValidationOutcome, WarningPolicy};
+use mdbook_linkcheck2::{Config, HashedRegex, ValidationOutcome, WarningPolicy};
 use std::{
     cell::Cell,
     collections::HashMap,
@@ -130,7 +130,7 @@ fn detect_when_a_linked_file_isnt_in_summary_md() {
         .find(|invalid| invalid.link.href == "sibling.md")
         .unwrap();
 
-    assert!(is_specific_error::<mdbook_linkcheck::NotInSummary>(
+    assert!(is_specific_error::<mdbook_linkcheck2::NotInSummary>(
         &broken_link.reason
     ));
 }
@@ -320,12 +320,13 @@ impl Renderer for TestRun {
 
         let noop_filter = |_: &Path| true;
 
-        let file_ids = mdbook_linkcheck::load_files_into_memory(&ctx.book, &mut files, noop_filter);
+        let file_ids =
+            mdbook_linkcheck2::load_files_into_memory(&ctx.book, &mut files, noop_filter);
         let (links, incomplete) =
-            mdbook_linkcheck::extract_links(&self.config, file_ids.clone(), &files);
+            mdbook_linkcheck2::extract_links(&self.config, file_ids.clone(), &files);
 
         let mut cache = Cache::default();
-        let outcome = mdbook_linkcheck::validate(
+        let outcome = mdbook_linkcheck2::validate(
             &links,
             &self.config,
             &src,
