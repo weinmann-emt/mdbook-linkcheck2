@@ -17,7 +17,7 @@ pub struct Context<'a> {
     pub(crate) interpolated_headers: Vec<(HashedRegex, Vec<(HeaderName, HeaderValue)>)>,
 }
 
-impl<'a> linkcheck2::validation::Context for Context<'a> {
+impl linkcheck2::validation::Context for Context<'_> {
     fn client(&self) -> &Client {
         &self.client
     }
