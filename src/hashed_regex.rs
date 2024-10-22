@@ -19,7 +19,7 @@ use std::{
 /// For example, while `[0-9]*` and `\d*` are the same regex, they will be
 /// considered different. In particular, the following is true:
 /// ```
-/// use mdbook_linkcheck2::HashedRegex;
+/// use mdbook_linkcheck::HashedRegex;
 ///
 /// assert_ne!(
 ///     HashedRegex::new("[0-9]*").unwrap(),
