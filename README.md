@@ -1,9 +1,9 @@
-# MDBook Link-Check
+# MDBook Link-Check2
 
-[![Continuous integration](https://github.com/Michael-F-Bryan/mdbook-linkcheck/workflows/Continuous%20integration/badge.svg?branch=master)](https://github.com/Michael-F-Bryan/mdbook-linkcheck/actions)
-[![Crates.io](https://img.shields.io/crates/v/mdbook-linkcheck.svg)](https://crates.io/crates/mdbook-linkcheck)
-[![Docs.rs](https://docs.rs/mdbook-linkcheck/badge.svg)](https://docs.rs/mdbook-linkcheck/)
-[![license](https://img.shields.io/github/license/michael-f-bryan/mdbook-linkcheck.svg)](https://github.com/Michael-F-Bryan/mdbook-linkcheck/blob/master/LICENSE)
+[![Continuous integration](https://github.com/marxin/mdbook-linkcheck2/workflows/Continuous%20integration/badge.svg?branch=master)](https://github.com/marxin/mdbook-linkcheck2/actions)
+[![Crates.io](https://img.shields.io/crates/v/mdbook-linkcheck2.svg)](https://crates.io/crates/mdbook-linkcheck2)
+[![Docs.rs](https://docs.rs/mdbook-linkcheck2/badge.svg)](https://docs.rs/mdbook-linkcheck2/)
+[![license](https://img.shields.io/github/license/Michael-F-Bryan/mdbook-linkcheck2.svg)](https://github.com/marxin/mdbook-linkcheck2/blob/master/LICENSE)
 
 A backend for `mdbook` which will check your links for you. For use alongside
 the built-in HTML renderer.
@@ -12,31 +12,14 @@ This is a **fork** of the [mdbook-linkcheck](https://github.com/Michael-F-Bryan/
 
 ## Getting Started
 
-First you'll need to install `mdbook-linkcheck`.
+First you'll need to install `mdbook-linkcheck2`.
 
 ```
-cargo install mdbook-linkcheck
+cargo install mdbook-linkcheck2
 ```
-
-If you don't want to install from source (which often takes a while) you can
-grab an executable from [GitHub Releases][releases] or use this line of
-`curl` to download a release bundle and install it in the `./mdbook-linkcheck`
-directory:
-
-```console
-mkdir -p mdbook-linkcheck && cd "$_" && \
-  curl -L https://github.com/Michael-F-Bryan/mdbook-linkcheck/releases/latest/download/mdbook-linkcheck.x86_64-unknown-linux-gnu.zip -o mdbook-linkcheck.zip && \
-  unzip "$_" && \
-  chmod +x mdbook-linkcheck && \
-  export PATH=$PWD:$PATH && \
-  cd ..
-```
-
-(note: you may need to replace the `x86_64-unknown-linux-gnu` with your
-platform's target triple)
 
 Next you'll need to update your `book.toml` to let `mdbook` know it needs to
-use `mdbook-linkcheck` as a backend.
+use `mdbook-linkcheck2` as a backend.
 
 ```toml
 [book]
