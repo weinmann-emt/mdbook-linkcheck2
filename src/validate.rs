@@ -21,9 +21,9 @@ fn lc_validate(
     src_dir: &Path,
     cache: &mut Cache,
     files: &Files<String>,
-    file_ids: &[FileId],
+    all_files_ids: &[FileId],
 ) -> Outcomes {
-    let file_names = file_ids
+    let file_names = all_files_ids
         .iter()
         .map(|id| files.name(*id).to_os_string())
         .collect();
@@ -90,13 +90,13 @@ fn ensure_included_in_book(
             match (summary_path.file_name(), resolved_link.file_name()) {
                 (a, b) if a == b => true,
                 (Some(summary), Some(resolved)) => {
-                    // index preprocessor rewrites summary paths before we get
-                    // to them.
+                    // index preprocessor rewrites summary paths before we get to them.
                     summary == Path::new("index.md") && resolved == Path::new("README.md")
                 }
                 _ => false,
             }
         });
+
         let ext = resolved_link.extension();
         let is_markdown = ext == Some(OsStr::new("md"));
 
@@ -171,6 +171,7 @@ fn merge_outcomes(outcomes: Outcomes, incomplete_links: Vec<IncompleteLink>) -> 
         });
         items
     }
+
     fn sorted_link(items: Vec<Link>) -> Vec<Link> {
         sorted(items, |link| link)
     }
@@ -191,10 +192,11 @@ pub fn validate(
     src_dir: &Path,
     cache: &mut Cache,
     files: &Files<String>,
-    file_ids: &[FileId],
+    _filtered_files_ids: &[FileId],
+    all_files_ids: &[FileId],
     incomplete_links: Vec<IncompleteLink>,
 ) -> Result<ValidationOutcome, Error> {
-    let got = lc_validate(links, cfg, src_dir, cache, files, file_ids);
+    let got = lc_validate(links, cfg, src_dir, cache, files, all_files_ids);
     Ok(merge_outcomes(got, incomplete_links))
 }
 
