@@ -14,7 +14,7 @@ readme = "README.md"
 rust-version = "1.70"
 
 [[bin]]
-name = "mdbook-linkcheck"
+name = "mdbook-linkcheck2"
 path = "src/bin/mdbook-linkcheck.rs"
 doc = false
 
