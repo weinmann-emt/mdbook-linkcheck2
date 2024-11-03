@@ -242,10 +242,12 @@ where
     assert_eq!(left, right);
 }
 
+type AfterValidationFn = Box<dyn Fn(&Files<String>, &ValidationOutcome, &Vec<FileId>)>;
+
 struct TestRun {
     config: Config,
     root: PathBuf,
-    after_validation: Box<dyn Fn(&Files<String>, &ValidationOutcome, &Vec<FileId>)>,
+    after_validation: AfterValidationFn,
     validation_outcome: Cell<Option<ValidationOutcome>>,
 }
 

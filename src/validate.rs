@@ -185,6 +185,7 @@ fn merge_outcomes(outcomes: Outcomes, incomplete_links: Vec<IncompleteLink>) -> 
     }
 }
 
+#[allow(clippy::too_many_arguments)]
 /// Try to validate the provided [`Link`]s.
 pub fn validate(
     links: &[Link],
