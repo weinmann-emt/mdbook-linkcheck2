@@ -116,8 +116,7 @@ pub fn get_config(cfg: &mdbook::Config) -> Result<Config, Error> {
         Some(raw) => raw
             .clone()
             .try_into()
-            .context("Unable to deserialize the `output.linkcheck` table.")
-            .map_err(Error::from),
+            .context("Unable to deserialize the `output.linkcheck` table."),
         None => Ok(Config::default()),
     }
 }
