@@ -49,7 +49,7 @@ struct Args {
     #[structopt(
         short = "f",
         long = "files",
-        help = "Check only the given files (check all files if omitted).
+        help = "Check web links only the given files (check all files if omitted).
 Paths must be relative to the book root, e.g. 'chapter1/section1.md'."
     )]
     selected_files: Option<Vec<String>>,

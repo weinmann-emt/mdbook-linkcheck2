@@ -1198,9 +1198,9 @@ dependencies = [
 
 [[package]]
 name = "linkcheck2"
-version = "0.6.0"
+version = "0.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "47fc01c7a0456c44637a5cfff658c42af3870a869f3a316abeca09a0de86c13c"
+checksum = "2e52b34bee535a0b74425b30c53397f2e94402e812478ea61518c9971ae8a547"
 dependencies = [
  "codespan",
  "dunce",
@@ -2619,7 +2619,7 @@ version = "0.1.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cf221c93e13a30d793f7645a0e7762c55d169dbb0a49671918a2319d289b10bb"
 dependencies = [
- "windows-sys 0.52.0",
+ "windows-sys 0.59.0",
 ]
 
 [[package]]

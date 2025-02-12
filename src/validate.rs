@@ -4,10 +4,10 @@ use codespan::{FileId, Files};
 use codespan_reporting::diagnostic::{Diagnostic, Label, Severity};
 use linkcheck2::{
     validation::{Cache, InvalidLink, Options, Outcomes, Reason},
-    Link,
+    Category, Link,
 };
 use std::{
-    collections::HashMap,
+    collections::{HashMap, HashSet},
     ffi::{OsStr, OsString},
     fmt::{self, Display, Formatter},
     path::{Component, Path, PathBuf},
@@ -21,8 +21,10 @@ fn lc_validate(
     src_dir: &Path,
     cache: &mut Cache,
     files: &Files<String>,
+    web_check_files_ids: &[FileId],
     all_files_ids: &[FileId],
 ) -> Outcomes {
+    let web_check_files_ids: HashSet<_> = web_check_files_ids.iter().collect();
     let file_names = all_files_ids
         .iter()
         .map(|id| files.name(*id).to_os_string())
@@ -53,7 +55,13 @@ fn lc_validate(
     let got = runtime.block_on(async {
         let mut outcomes = Outcomes::default();
 
-        for (current_dir, links) in links {
+        for (current_dir, mut links) in links {
+            // Skip web links for files not included in filter selection
+            links.retain(|link| match link.category() {
+                Some(Category::Url(_)) => web_check_files_ids.contains(&link.file),
+                _ => true,
+            });
+
             outcomes.merge(linkcheck2::validate(&current_dir, links, &ctx).await);
         }
 
@@ -193,11 +201,19 @@ pub fn validate(
     src_dir: &Path,
     cache: &mut Cache,
     files: &Files<String>,
-    _filtered_files_ids: &[FileId],
+    web_check_files_ids: &[FileId],
     all_files_ids: &[FileId],
     incomplete_links: Vec<IncompleteLink>,
 ) -> Result<ValidationOutcome, Error> {
-    let got = lc_validate(links, cfg, src_dir, cache, files, all_files_ids);
+    let got = lc_validate(
+        links,
+        cfg,
+        src_dir,
+        cache,
+        files,
+        web_check_files_ids,
+        all_files_ids,
+    );
     Ok(merge_outcomes(got, incomplete_links))
 }
 

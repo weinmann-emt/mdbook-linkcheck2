@@ -56,7 +56,7 @@ use std::{fs::File, path::Path};
 
 /// Run the link checking pipeline.
 ///
-/// If `selected_files` is `Some`, then links in the given list of files are
+/// If `selected_files` is `Some`, then web links in the given list of files are
 /// checked, rather than checking links in all files.
 ///
 /// If `cache_file` is `Some`, it is used as a cache; otherwise, no caching is
@@ -74,7 +74,7 @@ pub fn run(
     };
 
     log::info!("Started the link checker");
-    log::debug!("Selected file: {:?}", selected_files);
+    log::debug!("Selected files for web links: {:?}", selected_files);
 
     let cfg = crate::get_config(&ctx.config)?;
     crate::version_check(&ctx.version)?;
@@ -196,9 +196,14 @@ where
 {
     log::info!("Scanning book for links");
     let mut files: Files<String> = Files::new();
-    let (filtered_files_ids, all_file_ids) =
+    let (web_check_files_ids, all_file_ids) =
         crate::load_files_into_memory(&ctx.book, &mut files, file_filter);
-    let (links, incomplete_links) = crate::extract_links(cfg, filtered_files_ids.clone(), &files);
+    log::info!(
+        "Loaded {} files, filtered for web checking: {}",
+        all_file_ids.len(),
+        web_check_files_ids.len()
+    );
+    let (links, incomplete_links) = crate::extract_links(cfg, all_file_ids.clone(), &files);
     log::info!(
         "Found {} links ({} incomplete links)",
         links.len(),
@@ -212,7 +217,7 @@ where
         &src,
         cache,
         &files,
-        &filtered_files_ids,
+        &web_check_files_ids,
         &all_file_ids,
         incomplete_links,
     )?;
