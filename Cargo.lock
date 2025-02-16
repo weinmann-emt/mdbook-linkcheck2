@@ -1402,9 +1402,9 @@ dependencies = [
 
 [[package]]
 name = "linkcheck2"
-version = "0.7.0"
+version = "0.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2e52b34bee535a0b74425b30c53397f2e94402e812478ea61518c9971ae8a547"
+checksum = "a80bbd05bd179839f389255f9e793944dc16ca4052da8e22a69b275883f08877"
 dependencies = [
  "codespan",
  "dunce",
@@ -1412,7 +1412,7 @@ dependencies = [
  "http",
  "linkify",
  "log",
- "pulldown-cmark 0.12.2",
+ "pulldown-cmark 0.13.0",
  "reqwest",
  "serde",
  "thiserror 2.0.11",
@@ -1502,7 +1502,7 @@ dependencies = [
  "log",
  "mdbook",
  "pretty_assertions",
- "pulldown-cmark 0.12.2",
+ "pulldown-cmark 0.13.0",
  "regex",
  "reqwest",
  "semver",
@@ -1865,9 +1865,9 @@ dependencies = [
 
 [[package]]
 name = "pulldown-cmark"
-version = "0.12.2"
+version = "0.13.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f86ba2052aebccc42cbbb3ed234b8b13ce76f75c3551a303cb2bcffcff12bb14"
+checksum = "1e8bbe1a966bd2f362681a44f6edce3c2310ac21e4d5067a6e7ec396297a6ea0"
 dependencies = [
  "bitflags 2.8.0",
  "getopts",
