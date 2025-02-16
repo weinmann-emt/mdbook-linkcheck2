@@ -49,8 +49,8 @@ struct Args {
     #[structopt(
         short = "f",
         long = "files",
-        help = "Check web links only the given files (check all files if omitted).
-Paths must be relative to the book root, e.g. 'chapter1/section1.md'."
+        help = "Limit checking of web links to only the given files (check all files if omitted).
+        Internal links to other Markdown files are always checked in all files, even when this flag is passed."
     )]
     selected_files: Option<Vec<String>>,
     #[structopt(
