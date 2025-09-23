@@ -151,7 +151,7 @@ pub(crate) fn filter_out_latex_or_katex(src: &str, cfg: &Config,) -> (String, By
 
     if cfg.katex_support {
         process_regex(
-            r#"<span class="katex-display">.*</span>"#,
+            r#"<span class="katex">.*</span>"#,
             "katex"
         );
     }
